@@ -1,5 +1,6 @@
 ﻿using GraphQL;
 using GraphQL.Types;
+using GraphQLTutorial.Application.Mutation;
 using GraphQLTutorial.Application.Query;
 
 namespace GraphQLTutorial.Schema
@@ -10,7 +11,7 @@ namespace GraphQLTutorial.Schema
             : base(resolver)
         {
             Query = (GraphQLQuery)resolver.Resolve(typeof(GraphQLQuery));
-            //Mutation = (GraphQLMutation)resolver.Resolve(typeof(GraphQLMutation));
+            Mutation = (GraphQLMutation)resolver.Resolve(typeof(GraphQLMutation));
         }
     }
 }

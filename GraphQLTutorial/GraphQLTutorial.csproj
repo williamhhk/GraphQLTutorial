@@ -106,6 +106,10 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Application\Mutation\GraphQLMutation.cs" />
+    <Compile Include="Application\Mutation\Resolvers\HelloWorld3Resolver.cs" />
+    <Compile Include="Application\Mutation\Resolvers\IHelloWorld3Resolver.cs" />
+    <Compile Include="Application\Mutation\Resolvers\IResolver.cs" />
     <Compile Include="Application\Query\GraphQLQuery.cs" />
     <Compile Include="Application\Query\Resolvers\DataSource.cs" />
     <Compile Include="Application\Query\Resolvers\HelloWorld2Resolver.cs" />
