@@ -10,7 +10,7 @@ namespace GraphQLTutorial.Application.Query
     {
         public GraphQLQuery(IDependencyResolver resolver)
         {
-            var type = typeof(IResolver);
+            var type = typeof(IQuery);
             var resolversTypes = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(s => s.GetTypes())
                 .Where(p => type.IsAssignableFrom(p));
@@ -20,7 +20,7 @@ namespace GraphQLTutorial.Application.Query
                 var resolverTypeInterface = resolverType.GetInterfaces().Where(x => x != type).FirstOrDefault();
                 if (resolverTypeInterface != null)
                 {
-                    var typeResolver = resolver.Resolve(resolverTypeInterface) as IResolver;
+                    var typeResolver = resolver.Resolve(resolverTypeInterface) as IQuery;
                     //GlobalConfiguration.Configuration.DependencyResolver.GetService(resolverTypeInterface) as IResolver;
                     //var resolver = serviceProvider.GetService(resolverTypeInterface) as IResolver;
                     typeResolver.Resolve(this);

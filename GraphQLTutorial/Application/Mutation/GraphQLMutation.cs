@@ -12,7 +12,7 @@ namespace GraphQLTutorial.Application.Mutation
     {
         public GraphQLMutation(IDependencyResolver resolver)
         {
-            var type = typeof(IResolver);
+            var type = typeof(IMutation);
             var resolversTypes = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(s => s.GetTypes())
                 .Where(p => type.IsAssignableFrom(p));
@@ -22,7 +22,7 @@ namespace GraphQLTutorial.Application.Mutation
                 var resolverTypeInterface = resolverType.GetInterfaces().Where(x => x != type).FirstOrDefault();
                 if (resolverTypeInterface != null)
                 {
-                    var typeResolver = resolver.Resolve(resolverTypeInterface) as IResolver;
+                    var typeResolver = resolver.Resolve(resolverTypeInterface) as IMutation;
                     typeResolver.Resolve(this);
                 }
             }

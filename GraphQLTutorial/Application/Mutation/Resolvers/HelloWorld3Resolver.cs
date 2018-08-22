@@ -1,4 +1,5 @@
 ﻿using GraphQL.Types;
+using GraphQLTutorial.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,27 +41,4 @@ namespace GraphQLTutorial.Application.Mutation.Resolvers
         }
     }
 
-    public class ItemInputType : InputObjectGraphType
-    {
-        public ItemInputType()
-        {
-            Name = "ItemInput";
-            Field<NonNullGraphType<StringGraphType>>("name");
-        }
-    }
-
-    public class Item
-    {
-
-        public string Name { get; set; }
-
-    }
-
-    public class ItemType : ObjectGraphType<Item>
-    {
-        public ItemType()
-        {
-            Field(i => i.Name);
-        }
-    }
 }

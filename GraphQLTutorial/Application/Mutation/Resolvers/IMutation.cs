@@ -1,6 +1,6 @@
 ﻿namespace GraphQLTutorial.Application.Mutation.Resolvers
 {
-    public interface IResolver
+    public interface IMutation
     {
         void Resolve(GraphQLMutation graphQLMutation);
     }

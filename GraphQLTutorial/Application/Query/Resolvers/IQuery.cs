@@ -1,6 +1,6 @@
 ﻿namespace GraphQLTutorial.Application.Query.Resolvers
 {
-    public interface IResolver
+    public interface IQuery
     {
         void Resolve(GraphQLQuery graphQLQuery);
     }

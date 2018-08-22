@@ -109,20 +109,23 @@
     <Compile Include="Application\Mutation\GraphQLMutation.cs" />
     <Compile Include="Application\Mutation\Resolvers\HelloWorld3Resolver.cs" />
     <Compile Include="Application\Mutation\Resolvers\IHelloWorld3Resolver.cs" />
-    <Compile Include="Application\Mutation\Resolvers\IResolver.cs" />
+    <Compile Include="Application\Mutation\Resolvers\IMutation.cs" />
     <Compile Include="Application\Query\GraphQLQuery.cs" />
     <Compile Include="Application\Query\Resolvers\DataSource.cs" />
     <Compile Include="Application\Query\Resolvers\HelloWorld2Resolver.cs" />
     <Compile Include="Application\Query\Resolvers\HelloWorldResolver.cs" />
     <Compile Include="Application\Query\Resolvers\IHelloWorld2Resolver.cs" />
     <Compile Include="Application\Query\Resolvers\IHelloWorldResolver.cs" />
-    <Compile Include="Application\Query\Resolvers\IResolver.cs" />
+    <Compile Include="Application\Query\Resolvers\IQuery.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\GraphQLController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\GraphQLRequest.cs" />
+    <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\ItemInputType.cs" />
+    <Compile Include="Models\ItemType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Schemas\GraphQLSchema.cs" />
   </ItemGroup>
