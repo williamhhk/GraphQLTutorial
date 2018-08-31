@@ -42,10 +42,10 @@ namespace GraphQLTutorial
             var queries = assembly.GetExportedTypes().Where(type => type.Namespace == "GraphQLTutorial.Application.Query.Resolvers" && type.GetInterfaces().Any(i=>i.Name !="IQuery"))
                 .Select(type => new { Service = type.GetInterfaces().Where(i => i.Name != "IQuery").Single(), Implementation = type })
                 .ToList();
-            //foreach (var query in queries)
-            //{
-            //    container.Register(query.Service, query.Implementation, Lifestyle.Scoped);
-            //}
+            foreach (var query in queries)
+            {
+                container.Register(query.Service, query.Implementation, Lifestyle.Scoped);
+            }
 
 
 

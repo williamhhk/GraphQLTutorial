@@ -118,6 +118,7 @@
     <Compile Include="Application\Query\Resolvers\IHelloWorldResolver.cs" />
     <Compile Include="Application\Query\Resolvers\IQuery.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ApiControllerBase.cs" />
     <Compile Include="Controllers\GraphQLController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

@@ -1,13 +1,14 @@
 ﻿using GraphQL;
 using GraphQLTutorial.Models;
 using GraphQLTutorial.Schema;
+using System;
 using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace GraphQLTutorial.Controllers
 {
     [Route("api/graphql")]
-    public class GraphQLController : ApiController
+    public class GraphQLController : ApiControllerBase
     {
         GraphQLSchema _Schema;
 
@@ -30,5 +31,26 @@ namespace GraphQLTutorial.Controllers
             }).ConfigureAwait(false);
             return Ok(result);
         }
+
+        [HttpGet]
+        public async Task<IHttpActionResult> Get([FromUri] GraphQLRequest request)
+        {
+
+            Func<Task<IHttpActionResult>> asyncLambda = async () =>
+            {
+                var input = request.Variables.ToInputs();
+                var schema = _Schema;
+                var result = await new DocumentExecuter().ExecuteAsync(doc =>
+                {
+                    doc.Schema = schema;
+                    doc.Query = request.Query;
+                    doc.Inputs = input;
+                }).ConfigureAwait(false);
+                return Json(result);
+            };
+            return await CreateHttpResponseAsync(asyncLambda);
+
+        }
+
     }
 }
