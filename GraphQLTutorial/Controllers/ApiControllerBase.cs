@@ -29,7 +29,6 @@ namespace GraphQLTutorial.Controllers
 
         protected async Task<IHttpActionResult> CreateHttpResponseAsync(Func<Task<IHttpActionResult>> function)
         {
-            //public static Task<TResult> Run<TResult>(Func<TResult> function);
             try
             {
                 return await Task.Run(function);

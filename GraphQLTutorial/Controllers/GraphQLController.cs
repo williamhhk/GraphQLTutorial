@@ -21,22 +21,17 @@ namespace GraphQLTutorial.Controllers
         public async Task<IHttpActionResult> Post([FromBody] GraphQLRequest request)
         {
             //http://fiyazhasan.me/graphql-with-asp-net-core-part-v-fields-arguments-variables/
-            var input = request.Variables.ToInputs();
-            var schema = _Schema;
-            var result = await new DocumentExecuter().ExecuteAsync(doc =>
-            {
-                doc.Schema = schema;
-                doc.Query = request.Query;
-                doc.Inputs = input;
-            }).ConfigureAwait(false);
-            return Ok(result);
-        }
+            //var input = request.Variables.ToInputs();
+            //var schema = _Schema;
+            //var result = await new DocumentExecuter().ExecuteAsync(doc =>
+            //{
+            //    doc.Schema = schema;
+            //    doc.Query = request.Query;
+            //    doc.Inputs = input;
+            //}).ConfigureAwait(false);
+            //return Ok(result);
 
-        [HttpGet]
-        public async Task<IHttpActionResult> Get([FromUri] GraphQLRequest request)
-        {
-
-            Func<Task<IHttpActionResult>> asyncLambda = async () =>
+            async Task<IHttpActionResult> asyncLambda()
             {
                 var input = request.Variables.ToInputs();
                 var schema = _Schema;
@@ -47,7 +42,26 @@ namespace GraphQLTutorial.Controllers
                     doc.Inputs = input;
                 }).ConfigureAwait(false);
                 return Json(result);
-            };
+            }
+            return await CreateHttpResponseAsync(asyncLambda);
+        }
+
+        [HttpGet]
+        public async Task<IHttpActionResult> Get([FromUri] GraphQLRequest request)
+        {
+
+            async Task<IHttpActionResult> asyncLambda()
+            {
+                var input = request.Variables.ToInputs();
+                var schema = _Schema;
+                var result = await new DocumentExecuter().ExecuteAsync(doc =>
+                {
+                    doc.Schema = schema;
+                    doc.Query = request.Query;
+                    doc.Inputs = input;
+                }).ConfigureAwait(false);
+                return Json(result);
+            }
             return await CreateHttpResponseAsync(asyncLambda);
 
         }
